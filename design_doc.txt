@@ -1,0 +1,47 @@
+Design document, Junction 2017 Game Jam/Veikkaus track
+
+        __ ____________________ __
+       |  |                    |  |<-- Right side of 'control track' B
+       |  |                    |  |
+       |  |   o>           <o  |  |
+       |  |                    |  |
+       |  |    The field and   |  |
+       |  |    the cars        |  |
+       |__|___________________ |__|<-- Left side of 'control track' B
+        A                       B
+
+
+
+
+Elevator pitch:
+    - A 2D top-down mobile game with two (local) players.
+    - Each player controls a constantly accelerating car.
+    - When two cars collide, the one with greater speed destroys the slower moving car.
+    - A destoyed car respawns after a few seconds.
+    - If a car hits a wall or an obstacle, it loses a degree of it's speed.
+    - The game is real-time, but it's played in a series of rounds that last for a pre-determined amount of time (e.g. 1 minute).
+    - When the timer runs out, the player with more explosions (score) wins the round.
+
+Controls:
+    - The game is meant to be played on the same touchscreen device, be it a phone or
+    a tablet.
+    - On each end of the screen, both players have a 'control track' they can move their
+    finger on.
+    - When the player moves the finger to the left, the car turns left. When they move
+    their finger towards the right, the car turns right.
+    - If the player keeps their finger in the middle of the 'control track',
+    the car goes straight.
+    - The 'tightness' of the turn is determined by the distance from the mid-point of the
+    track. This means the player can go in circles, if they keep their finger on the far
+    side of the 'control track'
+
+Additional ideas and things to note:
+    - To tie the game into the theme of the game jam ("melt"), the field on which the two
+    cars battle each other could be made of ice or some other melting substance.
+    With time, the area of the arena gets smaller and smaller, as it slowly melts down.
+    - The two 'agents' or 'player characters' don't need to be cars per se, they can be
+    e.g. space ships, ships, ice-hockey players, two knigths jousting etc. This does not change the
+    main concept.
+    - To add some depth and 'tactical feel' into the game, some 'boosts' or 'pickups' can
+    be added. These could include short speed boost, additional droppable obstacles and
+    other sort of 'weapons'.
