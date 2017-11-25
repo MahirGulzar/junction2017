@@ -86,6 +86,7 @@ public class PlayerScript : MonoBehaviour
     {
         float factor = (float)((current_speed / 100) * (float)reduce_factor);
         Debug.Log(factor + " to be reduced");
+        factor *= getDeltaTime()+0.05f;
         float check_min = current_speed - factor;
         if(!(check_min<initial_speed))
         {

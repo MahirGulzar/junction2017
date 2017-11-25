@@ -12,13 +12,19 @@ public class Ram_Collision : MonoBehaviour {
         player = transform.parent.GetComponent<PlayerScript>();
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "Obstacle")
         {
             //Reduce Speed
             player.ReduceSpeed();
         }
+        
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
         switch (player.PlayerTag)
         {
             case PlayerType.LEFT:
