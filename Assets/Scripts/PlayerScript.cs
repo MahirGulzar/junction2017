@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     public float initial_speed;
     public float current_speed;
     public float acceleration;
+    public int timeFactor = 0;
     [Space(10)]
     [Range(0,100)]
     public int reduce_factor;
@@ -37,15 +38,16 @@ public class PlayerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        timeFactor = 0;
         current_speed = initial_speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        current_speed += acceleration * Time.deltaTime;
-        transform.position += transform.right * current_speed * Time.deltaTime;
+        float deltaTime = getDeltaTime();
+        current_speed += acceleration * deltaTime;
+        transform.position += transform.right * current_speed * deltaTime;
 
         if (sliderValue > 0.5f)
             rotateDirection = -1;
@@ -56,7 +58,7 @@ public class PlayerScript : MonoBehaviour
 
         float diff = Mathf.Abs(sliderValue - 0.5f);
         diff *= 200;
-        transform.Rotate(0, 0, diff * (float)rotateDirection * Time.deltaTime);
+        transform.Rotate(0, 0, diff * (float)rotateDirection * deltaTime);
         UI_Speed.text = ((int)current_speed).ToString();
     }
 
@@ -91,11 +93,14 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
+    private float getDeltaTime()
+    {
+        return Time.deltaTime * timeFactor;
+    }
 
     public void SpeedComparision(PlayerScript otherPlayer)
     {
-        if(otherPlayer.gameObject!=null)
+        if(otherPlayer && otherPlayer.gameObject!=null)
             if((int)otherPlayer.current_speed < (int)(current_speed))
             {
                 otherPlayer.UI_Speed.gameObject.SetActive(false);
