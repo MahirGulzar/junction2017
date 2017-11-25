@@ -19,8 +19,18 @@ public class TriggerExit : MonoBehaviour {
         if (collision.gameObject.tag == "LEFT_AGENT"
             || collision.gameObject.tag == "RIGHT_AGENT")
         {
-            //print("EXIT SPAM EXIT SPAM!");
-            //Destroy(collision.gameObject);
+            if(collision.tag== "LEFT_AGENT")
+            {
+                GameManager.Instance.onResetEvent(PlayerType.LEFT);
+                Debug.Log("Left Player Fell in Water..");
+                
+            }
+            else
+            {
+                GameManager.Instance.onResetEvent(PlayerType.RIGHT);
+                Debug.Log("Right Player Fell in Water..");
+            }
+            collision.gameObject.SetActive(false);
         }
     }
 }
