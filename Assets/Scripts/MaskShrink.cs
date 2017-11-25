@@ -8,6 +8,7 @@ public class MaskShrink : MonoBehaviour {
     public RectTransform maskRect;
     public PolygonCollider2D triggerCollision;
     public Image maskImage;
+    public RectTransform shadowImageRect;
     public GameManager gameManager;
     public float shrinkingPeriod;
     public float minIceFieldScale;
@@ -51,9 +52,11 @@ public class MaskShrink : MonoBehaviour {
         collisionScale.z = Mathf.Max(collisionScale.z, 0.0001f);
 
         maskRect.transform.localScale = maskScale;
+        shadowImageRect.transform.localScale = maskScale;
         triggerCollision.transform.localScale = collisionScale;
         maskImage.transform.localScale = new Vector3(1.0f / maskScale.x, 1.0f / maskScale.y, 1.0f / maskScale.z);
-	}
+
+    }
 
     void resetScales(PlayerType playerType)
     {
@@ -61,6 +64,7 @@ public class MaskShrink : MonoBehaviour {
 
         Vector3 maskScale = defaultScale;
         maskRect.transform.localScale = maskScale;
+        shadowImageRect.transform.localScale = maskScale;
         triggerCollision.transform.localScale = triggerCollisionDefaultScale;
         maskImage.transform.localScale = new Vector3(1.0f / maskScale.x, 1.0f / maskScale.y, 1.0f / maskScale.z);
     }
