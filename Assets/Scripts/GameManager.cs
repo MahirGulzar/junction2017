@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour {
 
     void OnResetBattle(PlayerType playerType)
     {
+        TriggerExit.shouldCheckTriggerExit = false;
+
         leftPlayer.transform.position = leftPlayer.spawnPos;
         leftPlayer.gameObject.SetActive(true);
         leftPlayer.UI_Speed.gameObject.SetActive(true);
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour {
             else if (!playerTimersSet && timeDelta < 0.01f)
             {
                 playerTimersSet = true;
+                TriggerExit.shouldCheckTriggerExit = true;
                 if (leftPlayer)
                     leftPlayer.timeFactor = 1;
                 if (rightPlayer)

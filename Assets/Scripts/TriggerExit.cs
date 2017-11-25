@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TriggerExit : MonoBehaviour {
 
+    public static bool shouldCheckTriggerExit = true;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,21 +18,27 @@ public class TriggerExit : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "LEFT_AGENT"
-            || collision.gameObject.tag == "RIGHT_AGENT")
+        if (shouldCheckTriggerExit)
         {
-            if(collision.tag== "LEFT_AGENT")
+            if (collision.gameObject.tag == "LEFT_AGENT"
+                || collision.gameObject.tag == "RIGHT_AGENT")
             {
-                GameManager.Instance.onResetEvent(PlayerType.LEFT);
-                Debug.Log("Left Player Fell in Water..");
-                
+                //collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                collision.gameObject.SetActive(false);
+
+                if (collision.tag == "LEFT_AGENT")
+                {
+                    GameManager.Instance.onResetEvent(PlayerType.RIGHT);
+                    Debug.Log("Left Player Fell in Water..");
+
+                }
+                else
+                {
+                    GameManager.Instance.onResetEvent(PlayerType.LEFT);
+                    Debug.Log("Right Player Fell in Water..");
+                }
+
             }
-            else
-            {
-                GameManager.Instance.onResetEvent(PlayerType.RIGHT);
-                Debug.Log("Right Player Fell in Water..");
-            }
-            collision.gameObject.SetActive(false);
         }
     }
 }
