@@ -19,8 +19,8 @@ public class TriggerExit : MonoBehaviour {
         if (collision.gameObject.tag == "LEFT_AGENT"
             || collision.gameObject.tag == "RIGHT_AGENT")
         {
-            print("EXIT SPAM EXIT SPAM!");
-            Destroy(collision.gameObject);
+            //print("EXIT SPAM EXIT SPAM!");
+            //Destroy(collision.gameObject);
         }
     }
 }

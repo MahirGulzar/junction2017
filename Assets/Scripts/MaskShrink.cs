@@ -13,8 +13,20 @@ public class MaskShrink : MonoBehaviour {
     private float currentTime;
     Vector3 defaultScale;
 
-	// Use this for initialization
-	void Start ()
+
+
+    private void OnEnable()
+    {
+        GameManager.Instance.onResetEvent += this.resetScales;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.onResetEvent -= this.resetScales;
+    }
+
+
+    // Use this for initialization
+    void Start ()
     {
         currentTime = 0.0f;
         defaultScale = maskRect.transform.localScale;
@@ -36,7 +48,7 @@ public class MaskShrink : MonoBehaviour {
         maskImage.transform.localScale = new Vector3(1.0f / maskScale.x, 1.0f / maskScale.y, 1.0f / maskScale.z);
 	}
 
-    void resetScales()
+    void resetScales(PlayerType playerType)
     {
         currentTime = 0.0f;
 

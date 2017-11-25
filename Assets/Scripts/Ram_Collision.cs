@@ -31,7 +31,7 @@ public class Ram_Collision : MonoBehaviour {
                 if (col.gameObject.tag == "RIGHT_AGENT")
                 {
                     // Do a speed comparison
-                    print("Doing Speed Comparision");
+                    //print("Doing Speed Comparision");
                     player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
                 }
 
@@ -40,7 +40,7 @@ public class Ram_Collision : MonoBehaviour {
                 if (col.gameObject.tag == "LEFT_AGENT")
                 {
                     // Do a speed comparison
-                    print("Doing Speed Comparision");
+                    //print("Doing Speed Comparision");
                     player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
                 }
 

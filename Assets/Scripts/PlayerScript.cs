@@ -8,6 +8,7 @@ public enum PlayerType
 {
     LEFT,
     RIGHT,
+    None,
 }
 
 
@@ -35,11 +36,30 @@ public class PlayerScript : MonoBehaviour
     [Space(10)]
     public Text UI_Speed;
 
+
+    [HideInInspector]
+    public Vector3 spawnPos;
+    [HideInInspector]
+    public Quaternion spawnRotation;
+
+
+    private void OnEnable()
+    {
+        GameManager.Instance.onResetEvent += this.ResetPlayer;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.onResetEvent -= this.ResetPlayer;
+    }
+
+
     // Use this for initialization
     void Start()
     {
         timeFactor = 0;
         current_speed = initial_speed;
+        spawnPos = transform.position;
+        spawnRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -65,7 +85,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnSliderValueChange(Slider slider)
     {
-        print("Player " + gameObject.name + " should rotate with this");
+        //print("Player " + gameObject.name + " should rotate with this");
         sliderValue = slider.value;
     }
 
@@ -85,7 +105,7 @@ public class PlayerScript : MonoBehaviour
     public void ReduceSpeed()
     {
         float factor = (float)((current_speed / 100) * (float)reduce_factor);
-        Debug.Log(factor + " to be reduced");
+        //Debug.Log(factor + " to be reduced");
         factor *= getDeltaTime()+0.05f;
         float check_min = current_speed - factor;
         if(!(check_min<initial_speed))
@@ -105,7 +125,18 @@ public class PlayerScript : MonoBehaviour
             if((int)otherPlayer.current_speed < (int)(current_speed))
             {
                 otherPlayer.UI_Speed.gameObject.SetActive(false);
-                Destroy(otherPlayer.gameObject);
+                //Destroy(otherPlayer.gameObject);
+                otherPlayer.gameObject.SetActive(false);
+                GameManager.Instance.onResetEvent(PlayerTag);
             }
+    }
+
+
+    public void ResetPlayer(PlayerType playerType)
+    {
+        
+        timeFactor = 0;
+
+        
     }
 }
