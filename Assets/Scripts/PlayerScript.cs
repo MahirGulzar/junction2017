@@ -30,6 +30,10 @@ public class PlayerScript : MonoBehaviour
     private int rotateDirection = 0;
 
 
+    [Header("UI Elements")]
+    [Space(10)]
+    public Text UI_Speed;
+
     // Use this for initialization
     void Start()
     {
@@ -39,6 +43,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         current_speed += acceleration * Time.deltaTime;
         transform.position += transform.right * current_speed * Time.deltaTime;
 
@@ -52,6 +57,7 @@ public class PlayerScript : MonoBehaviour
         float diff = Mathf.Abs(sliderValue - 0.5f);
         diff *= 200;
         transform.Rotate(0, 0, diff * (float)rotateDirection * Time.deltaTime);
+        UI_Speed.text = ((int)current_speed).ToString();
     }
 
 
@@ -69,30 +75,12 @@ public class PlayerScript : MonoBehaviour
             //Reduce Speed
             ReduceSpeed();
         }
-        switch (PlayerTag)
-        {
-            case PlayerType.LEFT:
-                if (col.gameObject.name == "LEFT_AGENT")
-                {
-                    //Destroy(col.gameObject);
-                    // Do a speed comparison
-                }
-
-                break;
-            case PlayerType.RIGHT:
-                if (col.gameObject.name == "LEFT_AGENT")
-                {
-                    //Destroy(col.gameObject);
-                    // Do a speed comparison
-                }
-
-                break;
-        }
+        
     }
 
 
 
-    void ReduceSpeed()
+    public void ReduceSpeed()
     {
         float factor = (float)((current_speed / 100) * (float)reduce_factor);
         Debug.Log(factor + " to be reduced");
@@ -101,5 +89,17 @@ public class PlayerScript : MonoBehaviour
         {
             current_speed -= factor;
         }
+    }
+
+
+
+    public void SpeedComparision(PlayerScript otherPlayer)
+    {
+        if(otherPlayer.gameObject!=null)
+            if((int)otherPlayer.current_speed < (int)(current_speed))
+            {
+                otherPlayer.UI_Speed.gameObject.SetActive(false);
+                Destroy(otherPlayer.gameObject);
+            }
     }
 }
