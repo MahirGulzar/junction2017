@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour {
     private bool playerTimersSet = false;
 
     public Action<PlayerType> onResetEvent;
-    
 
+    public GameObject gameOverPanel;
 
     
     private void Awake()
@@ -76,8 +76,8 @@ public class GameManager : MonoBehaviour {
                 Left_Score.text = left_win_Count.ToString();
                 if(left_win_Count>=3)
                 {
-
-                    return;
+                    String victoryText = "Orange Player Is Victorious!";
+                    GameOver(victoryText);
                 }
                 break;
             case PlayerType.RIGHT:
@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour {
                 Right_Score.text = right_win_Count.ToString();
                 if (right_win_Count >= 3)
                 {
-
-                    return;
+                    String victoryText = "Purple Player Is Victorious!";
+                    GameOver(victoryText);
                 }
                 break;
             case PlayerType.None:
@@ -139,10 +139,26 @@ public class GameManager : MonoBehaviour {
         // reset level
     }
 
-    private void GameOver()
+    private void GameOver(String text)
     {
-        Debug.Log("Game Over requested!");
+        Time.timeScale = 0.0f;
+        gameOverPanel.gameObject.SetActive(true);
+        Text victoryText = gameOverPanel.gameObject.GetComponent<Text>();
+        if (victoryText)
+            victoryText.text = text;
+    }
+
+    public void OnReturnToMainMenu()
+    {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnPlayAgain()
+    {
+        Time.timeScale = 1.0f;
+        gameOverPanel.gameObject.SetActive(false);
+        SceneManager.LoadScene("BattleScene");
     }
 
     public void OnSliderUp(Slider slider)
