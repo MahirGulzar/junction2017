@@ -20,29 +20,87 @@ public class TriggerExit : MonoBehaviour {
     {
         if (shouldCheckTriggerExit)
         {
-            //if (collision.gameObject.tag == "LEFT_AGENT"
-            //    || collision.gameObject.tag == "RIGHT_AGENT")
-            //{
-            //    if (collision.gameObject.GetComponent<PlayerScript>()!=null)
-            //    {
-            //        collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
-            //        collision.gameObject.SetActive(false);
-                
+            if (collision.gameObject.tag == "LEFT_AGENT"
+                || collision.gameObject.tag == "RIGHT_AGENT")
+            {
 
-            //        if (collision.tag == "LEFT_AGENT")
-            //        {
-            //            GameManager.Instance.onResetEvent(PlayerType.RIGHT);
-            //            Debug.Log("Left Player Fell in Water..");
+                print("fucking horrible");
+                if (collision.gameObject.GetComponent<PlayerScript>() != null)
+                {
+                    PlayerScript temp = collision.gameObject.GetComponent<PlayerScript>();
+                    temp.particle.startColor = new Color32(0, 191, 255, 255);
 
-            //        }
-            //        else
-            //        {
-            //            GameManager.Instance.onResetEvent(PlayerType.LEFT);
-            //            Debug.Log("Right Player Fell in Water..");
-            //        }
-            //    }
 
-            //}
+                }
+                //{
+                //    collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                //    collision.gameObject.SetActive(false);
+                //if (collision.gameObject.GetComponent<PlayerScript>() != null)
+                //{
+                //    collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                //    collision.gameObject.SetActive(false);
+
+
+                //    if (collision.tag == "LEFT_AGENT")
+                //    {
+                //        GameManager.Instance.onResetEvent(PlayerType.RIGHT);
+                //        Debug.Log("Left Player Fell in Water..");
+
+                //    }
+                //    else
+                //    {
+                //        GameManager.Instance.onResetEvent(PlayerType.LEFT);
+                //        Debug.Log("Right Player Fell in Water..");
+                //    }
+                //}
+
+            }
+        }
+    }
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (shouldCheckTriggerExit)
+        {
+            if (collision.gameObject.tag == "LEFT_AGENT"
+                || collision.gameObject.tag == "RIGHT_AGENT")
+            {
+
+
+                if (collision.gameObject.GetComponent<PlayerScript>() != null)
+                {
+                    PlayerScript temp = collision.gameObject.GetComponent<PlayerScript>();
+                    temp.particle.startColor = new Color32(255, 255, 255, 255);
+                    //temp.particle.startColor = new Color32(176, 224, 230, 255);
+                    //176,224,230
+
+                }
+                //{
+                //    collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                //    collision.gameObject.SetActive(false);
+                //if (collision.gameObject.GetComponent<PlayerScript>() != null)
+                //{
+                //    collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                //    collision.gameObject.SetActive(false);
+
+
+                //    if (collision.tag == "LEFT_AGENT")
+                //    {
+                //        GameManager.Instance.onResetEvent(PlayerType.RIGHT);
+                //        Debug.Log("Left Player Fell in Water..");
+
+                //    }
+                //    else
+                //    {
+                //        GameManager.Instance.onResetEvent(PlayerType.LEFT);
+                //        Debug.Log("Right Player Fell in Water..");
+                //    }
+                //}
+
+            }
         }
     }
 }
