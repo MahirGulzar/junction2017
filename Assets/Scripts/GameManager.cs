@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour {
     {
         TriggerExit.shouldCheckTriggerExit = false;
         Ram_Collision.shouldCheckTriggerExit = false;
+        SoundManager.Instance.StopOneShotLoop();
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.Hit);
 
         leftPlayer.transform.position = leftPlayer.spawnPos;
         if (!leftPlayer.gameObject.active)
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour {
                 playerTimersSet = true;
                 TriggerExit.shouldCheckTriggerExit = true;
                 Ram_Collision.shouldCheckTriggerExit = true;
+                SoundManager.Instance.PlayOneShotLoop(SoundManager.Instance.Skating);
                 if (leftPlayer)
                     leftPlayer.timeFactor = 1;
                 if (rightPlayer)

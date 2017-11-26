@@ -99,6 +99,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(col.gameObject.tag=="Obstacle")
         {
+            SoundManager.Instance.PlayOneShot(SoundManager.Instance.wallBump);
             //Reduce Speed
             ReduceSpeed();
         }

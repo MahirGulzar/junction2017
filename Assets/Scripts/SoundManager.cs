@@ -9,8 +9,11 @@ public class SoundManager : MonoBehaviour {
     public static SoundManager Instance;
 
     public AudioSource OneShotLooper;
+    public AudioSource OneShot;
 
     public AudioClip Skating;
+    public AudioClip wallBump;
+    public AudioClip Hit;
     private void Awake()
     {
         Instance = this;
@@ -26,6 +29,13 @@ public class SoundManager : MonoBehaviour {
     public void StopOneShotLoop()
     {
         OneShotLooper.Stop();
+    }
+
+
+    public void PlayOneShot(AudioClip audiofile)
+    {
+        //OneShotLooper.clip = audiofile;
+        OneShotLooper.PlayOneShot(audiofile);
     }
 
 

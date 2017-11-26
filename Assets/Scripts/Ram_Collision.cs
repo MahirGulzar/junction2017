@@ -16,6 +16,7 @@ public class Ram_Collision : MonoBehaviour {
     {
         if (col.gameObject.tag == "Obstacle")
         {
+            //SoundManager.Instance.PlayOneShot(SoundManager.Instance.wallBump);
             //Reduce Speed
             player.ReduceSpeed();
         }
