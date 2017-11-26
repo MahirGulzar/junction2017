@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ram_Collision : MonoBehaviour {
 
     PlayerScript player;
-
+    public static bool shouldCheckTriggerExit = true;
 
     void Start()
     {
@@ -25,26 +25,29 @@ public class Ram_Collision : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        switch (player.PlayerTag)
+        if (shouldCheckTriggerExit)
         {
-            case PlayerType.LEFT:
-                if (col.gameObject.tag == "RIGHT_AGENT")
-                {
-                    // Do a speed comparison
-                    //print("Doing Speed Comparision");
-                    player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
-                }
+            switch (player.PlayerTag)
+            {
+                case PlayerType.LEFT:
+                    if (col.gameObject.tag == "RIGHT_AGENT")
+                    {
+                        // Do a speed comparison
+                        //print("Doing Speed Comparision");
+                        player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
+                    }
 
-                break;
-            case PlayerType.RIGHT:
-                if (col.gameObject.tag == "LEFT_AGENT")
-                {
-                    // Do a speed comparison
-                    //print("Doing Speed Comparision");
-                    player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
-                }
+                    break;
+                case PlayerType.RIGHT:
+                    if (col.gameObject.tag == "LEFT_AGENT")
+                    {
+                        // Do a speed comparison
+                        //print("Doing Speed Comparision");
+                        player.SpeedComparision(col.gameObject.GetComponent<PlayerScript>());
+                    }
 
-                break;
+                    break;
+            }
         }
     }
 }

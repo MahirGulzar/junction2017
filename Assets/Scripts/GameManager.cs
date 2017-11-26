@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
     void OnResetBattle(PlayerType playerType)
     {
         TriggerExit.shouldCheckTriggerExit = false;
+        Ram_Collision.shouldCheckTriggerExit = false;
 
         leftPlayer.transform.position = leftPlayer.spawnPos;
         if (!leftPlayer.gameObject.active)
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour {
             {
                 playerTimersSet = true;
                 TriggerExit.shouldCheckTriggerExit = true;
+                Ram_Collision.shouldCheckTriggerExit = true;
                 if (leftPlayer)
                     leftPlayer.timeFactor = 1;
                 if (rightPlayer)
