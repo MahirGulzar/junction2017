@@ -20,6 +20,11 @@ public class SoundManager : MonoBehaviour {
     }
 
 
+    private void Start()
+    {
+        this.GetComponent<AudioSource>().Play();
+    }
+
     public void PlayOneShotLoop(AudioClip audiofile)
     {
         OneShotLooper.clip = audiofile;
@@ -38,5 +43,13 @@ public class SoundManager : MonoBehaviour {
         OneShotLooper.PlayOneShot(audiofile);
     }
 
+
+    private void Update()
+    {
+        if(!this.GetComponent<AudioSource>().isPlaying)
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
+    }
 
 }
