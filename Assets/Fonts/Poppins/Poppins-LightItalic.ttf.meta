@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 753fc6ebef82b4a46abd947f036d8810
+timeCreated: 1511663340
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Poppins
+  fontNames:
+  - Poppins
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 20af69123d85352499ecf6a5b196aa50, type: 3}
+  - {fileID: 12800000, guid: 685df9f3c8d1aca478b3f8c68c631bcc, type: 3}
+  - {fileID: 12800000, guid: 021c3df3da5e4e5498ed67c440086905, type: 3}
+  - {fileID: 12800000, guid: 5f9840c583341294594034d39f6bf411, type: 3}
+  - {fileID: 12800000, guid: 292bb686856c03f449ebce6e4b2da2d5, type: 3}
+  - {fileID: 12800000, guid: 03cc1ac8a2a4a944d8fdb9afe93a75e2, type: 3}
+  - {fileID: 12800000, guid: 52c00bdb4aba9fe40b60c192c0a19ac7, type: 3}
+  - {fileID: 12800000, guid: 373ed30eef12e9e4da68c04123aa0006, type: 3}
+  - {fileID: 12800000, guid: 4ff1a36f22f13074b9d8c8aa7ba9ec8a, type: 3}
+  - {fileID: 12800000, guid: 0eee319f19cedbd40b97eca9e914f383, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
