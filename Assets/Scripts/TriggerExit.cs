@@ -23,8 +23,11 @@ public class TriggerExit : MonoBehaviour {
             if (collision.gameObject.tag == "LEFT_AGENT"
                 || collision.gameObject.tag == "RIGHT_AGENT")
             {
-                //collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
-                collision.gameObject.SetActive(false);
+                if (collision.gameObject.GetComponent<PlayerScript>()!=null)
+                {
+                    collision.gameObject.GetComponent<PlayerScript>().UI_Speed.gameObject.SetActive(false);
+                    collision.gameObject.SetActive(false);
+                }
 
                 if (collision.tag == "LEFT_AGENT")
                 {

@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour {
     public int right_win_Count = 0;
 
     public Text timerText;
+    public Text Left_Score;
+    public Text Right_Score;
+
     private bool playerTimersSet = false;
 
     public Action<PlayerType> onResetEvent;
@@ -50,14 +53,16 @@ public class GameManager : MonoBehaviour {
         TriggerExit.shouldCheckTriggerExit = false;
 
         leftPlayer.transform.position = leftPlayer.spawnPos;
-        leftPlayer.gameObject.SetActive(true);
+        if (!leftPlayer.gameObject.active)
+            leftPlayer.gameObject.SetActive(true);
         leftPlayer.UI_Speed.gameObject.SetActive(true);
         leftPlayer.transform.rotation = leftPlayer.spawnRotation;
         leftPlayer.timeFactor = 0;
         leftPlayer.current_speed = leftPlayer.initial_speed;
 
         rightPlayer.transform.position = rightPlayer.spawnPos;
-        rightPlayer.gameObject.SetActive(true);
+        if(!rightPlayer.gameObject.active)
+            rightPlayer.gameObject.SetActive(true);
         rightPlayer.transform.rotation = rightPlayer.spawnRotation;
         rightPlayer.UI_Speed.gameObject.SetActive(true);
         rightPlayer.timeFactor = 0;
@@ -67,6 +72,7 @@ public class GameManager : MonoBehaviour {
         {
             case PlayerType.LEFT:
                 left_win_Count++;
+                Left_Score.text = left_win_Count.ToString();
                 if(left_win_Count>=3)
                 {
 
@@ -75,6 +81,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case PlayerType.RIGHT:
                 right_win_Count++;
+                Right_Score.text = right_win_Count.ToString();
                 if (right_win_Count >= 3)
                 {
 
