@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour {
                 if(left_win_Count>=3)
                 {
                     String victoryText = "Orange Player Is Victorious!";
-                    GameOver(victoryText);
+                    Color color = new Color(1.0f, 0.4f, 0.0f);
+                    GameOver(victoryText, color);
                 }
                 break;
             case PlayerType.RIGHT:
@@ -89,7 +90,8 @@ public class GameManager : MonoBehaviour {
                 if (right_win_Count >= 3)
                 {
                     String victoryText = "Purple Player Is Victorious!";
-                    GameOver(victoryText);
+                    Color color = new Color(0.8f, 0.0f, 1.0f);
+                    GameOver(victoryText, color);
                 }
                 break;
             case PlayerType.None:
@@ -142,13 +144,20 @@ public class GameManager : MonoBehaviour {
         // reset level
     }
 
-    private void GameOver(String text)
+    private void GameOver(String text, Color color)
     {
         Time.timeScale = 0.0f;
         gameOverPanel.gameObject.SetActive(true);
-        Text victoryText = gameOverPanel.gameObject.GetComponent<Text>();
-        if (victoryText)
-            victoryText.text = text;
+        Transform victoryText = gameOverPanel.transform.Find("VictoryText");
+        if (victoryText && victoryText.gameObject)
+        {
+            Text vt = victoryText.gameObject.GetComponent<Text>();
+            if (vt)
+            {
+                vt.text = text;
+                vt.color = color;
+            }
+        }
     }
 
     public void OnReturnToMainMenu()
