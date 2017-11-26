@@ -32,6 +32,11 @@ public class PlayerScript : MonoBehaviour
     private int rotateDirection = 0;
 
 
+    [Header("Particles")]
+    [Space(10)]
+    public ParticleSystem particle;
+
+
     [Header("UI Elements")]
     [Space(10)]
     public Text UI_Speed;

@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
         leftPlayer.transform.rotation = leftPlayer.spawnRotation;
         leftPlayer.timeFactor = 0;
         leftPlayer.current_speed = leftPlayer.initial_speed;
+        leftPlayer.particle.startColor = new Color32(255, 255, 255, 255);
+
 
         rightPlayer.transform.position = rightPlayer.spawnPos;
         if(!rightPlayer.gameObject.active)
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour {
         rightPlayer.UI_Speed.gameObject.SetActive(true);
         rightPlayer.timeFactor = 0;
         rightPlayer.current_speed = rightPlayer.initial_speed;
+        rightPlayer.particle.startColor = new Color32(255, 255, 255, 255);
 
         switch (playerType)
         {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MaskShrink : MonoBehaviour {
 
     public RectTransform maskRect;
-    public PolygonCollider2D triggerCollision;
+    public BoxCollider2D triggerCollision;
     public Image maskImage;
     public RectTransform shadowImageRect;
     public Image shadowImage;
