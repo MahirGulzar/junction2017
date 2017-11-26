@@ -24,7 +24,7 @@ public class TriggerExit : MonoBehaviour {
                 || collision.gameObject.tag == "RIGHT_AGENT")
             {
 
-                print("fucking horrible");
+               // print("fucking horrible");
                 if (collision.gameObject.GetComponent<PlayerScript>() != null)
                 {
                     PlayerScript temp = collision.gameObject.GetComponent<PlayerScript>();
